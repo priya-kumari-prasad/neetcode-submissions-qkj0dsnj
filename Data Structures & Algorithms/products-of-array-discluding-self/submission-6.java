@@ -1,0 +1,19 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int ans[] = new int[n];
+        Arrays.fill(ans,1);
+        
+        for(int i = 1; i<n; i++){
+            //prefix
+            ans[i] = nums[i-1] * ans[i-1];
+        }
+
+        int suff = 1;    
+        for(int i = n-2; i>=0; i--){
+            suff *= nums[i+1];
+            ans[i] = ans[i] * suff;
+        }
+        return ans;
+    }
+}  

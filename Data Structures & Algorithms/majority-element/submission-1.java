@@ -1,0 +1,29 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+       int majority = nums[0];
+       int count = 1;
+       for(int i = 1; i<nums.length; i++){
+        if(count == 0){
+            count++;
+            majority = nums[i];
+        }
+        else if(nums[i] == majority){
+            count++;
+        }
+        else{
+            count--;
+        }
+       }
+        
+       int res = 0;
+       for(int i = 0; i<nums.length; i++){
+        if(nums[i] == majority){
+            res++;
+        }
+       }
+       if(res >= nums.length/2){
+        return majority;
+       }
+       return -1; 
+    }
+}
